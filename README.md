@@ -15,6 +15,7 @@ An intelligent, hands-free mouse pointer control system that uses eye-tracking a
 - **Cross-Platform**: Works on Windows, macOS, and Linux
 
 ## Complete Project Structure
+```bash
 eye_mouse_controller/
 ├── setup.py
 ├── README.md
@@ -32,6 +33,8 @@ eye_mouse_controller/
     ├── test_eye_tracker.py
     ├── test_gesture_controller.py
     └── test_mouse_controller.py
+
+```
 
 ## Requirements
 
