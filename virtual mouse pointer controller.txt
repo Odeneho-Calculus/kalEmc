@@ -1,0 +1,115 @@
+🧠 Project Brief: Intelligent Eye-Tracking Virtual Assistant for Hands-Free Mouse Control
+🎯 Objective:
+
+Develop an intelligent, background-running Python assistant that enables complete control of the mouse pointer through eye movement and blinking patterns, completely independent of any physical input device (mouse, trackpad, or touchscreen). The assistant must support voice-activated wake and shutdown commands, ensuring a seamless, hands-free experience for the user.
+🚀 Key Functionalities:
+1. Background Service with Activation Keywords
+
+    The application should initialize on system boot or run silently in the background.
+
+    It should remain idle until activated by a customizable voice command such as:
+
+        Wake word: "wake up"
+
+        Shutdown word: "Go to sleep"
+
+    During active mode, it should listen for these commands in real time without interfering with other applications.
+
+2. Camera Access (Cross-Platform)
+
+    Access the device's webcam to continuously capture the user’s face and eye movements.
+
+    Must be compatible with Windows, macOS, and Linux.
+
+    Preferred library: opencv-python
+
+3. Eye and Pupil Tracking
+
+    Detect and isolate the eyes using facial landmarks.
+
+    Track the pupil (dark center of the eye) to determine directional gaze:
+
+        Left → Move mouse left
+
+        Right → Move mouse right
+
+        Up → Move mouse up
+
+        Down → Move mouse down
+
+    Optionally calibrate screen zones for pointer precision.
+
+    Preferred tools: MediaPipe FaceMesh, OpenCV
+
+4. Blink-Based Command Mapping
+
+    Recognize specific blinking patterns as mouse commands:
+
+        Single Blink → Left Click
+
+        Double Blink → Double Left Click
+
+        Long Blink (≥1 second) → Right Click
+
+        Left Wink → Scroll Up
+
+        Right Wink → Scroll Down
+
+5. Mouse Control Integration
+
+    The assistant will translate eye and blink gestures into actual system-level mouse events using:
+
+        pyautogui or pynput for actions like move, click, double-click, and scroll
+
+    Pointer speed and gesture sensitivity should be customizable.
+
+6. System Permissions & Stability
+
+    Ensure the assistant:
+
+        Has permission to access webcam, microphone, and control input devices
+
+        Can run with elevated privileges if necessary
+
+        Handles errors (e.g., camera unavailable) gracefully
+
+        Doesn’t crash or interfere with other processes
+
+7. Lightweight, Modular Design
+
+    Must be modular for easy maintenance and extension.
+
+    Suggested module breakdown:
+
+        voice_listener.py – Wake/shutdown word detection
+
+        eye_tracker.py – Eye and pupil detection logic
+
+        gesture_controller.py – Blink/gaze interpretation
+
+        mouse_controller.py – Interface to system mouse
+
+        main.py – Orchestrator and lifecycle manager
+
+🧰 Suggested Stack:
+Purpose	Library
+Camera input	opencv-python
+Eye detection	mediapipe, dlib (optional)
+Mouse control	pyautogui, pynput
+Voice activation	speech_recognition, pyaudio, vosk, or whisper
+Background execution	pyinstaller or autopytoexe to bundle into a system tray app
+✅ End Goal:
+
+You will have a smart virtual assistant that:
+
+    Runs silently in the background
+
+    Wakes up with a voice command
+
+    Tracks your pupil in real time to move the mouse
+
+    Interprets blinks/winks as mouse gestures
+
+    Shuts down cleanly via a voice command
+
+    Works across major operating systems
